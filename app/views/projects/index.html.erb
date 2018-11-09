@@ -1,0 +1,42 @@
+<main>
+    <div class="container-fluid">
+    	<div class="card">
+    		<h4 class="card-header primary-color lighten-1 white-text text-center py-3">My Projects</h4>
+  			<div class="card-body">
+	  			<div class="table-responsive text-nowrap table-hover table-striped">
+				  <table class="table">
+				    <thead>
+				      <tr>
+				        <th scope="col" class="font-weight-bold dark-grey-text">#</th>
+				        <th scope="col" class="font-weight-bold dark-grey-text">Project Name</th>
+				        <th scope="col" class="font-weight-bold dark-grey-text">Short Description</th>
+				        <th scope="col" class="font-weight-bold dark-grey-text">Arrival City</th>
+				        <th scope="col" class="font-weight-bold dark-grey-text">Est Cost</th>
+				        <th scope="col" class="font-weight-bold dark-grey-text">Req Funds</th>
+				        <th scope="col" class="font-weight-bold dark-grey-text">Status</th>
+				        <th scope="col" class="font-weight-bold dark-grey-text">Created Date</th>
+				        <th scope="col" class="font-weight-bold dark-grey-text">Exp Date</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    <% @projects.each_with_index do |project,index| %>
+				      <tr>
+				        <th scope="row"><%= index + 1 %></th>
+				        <td><%= link_to project.ProjectName, Project.find(project.ProjectID), :class => "waves-effect" %></td>
+				        <td class="text-truncate"><%= project.Description %></td>
+				        <td><%= project.ArrivalCity %></td>
+				        <td><%= "$" + project.EstimatedCost.to_s %></td>
+				        <td><%= "$" + project.RequestedProjectFunds.to_s %></td>
+				        <td><%= "Active" %></td>
+				        <td><%= project.CreatedDate.strftime("%m/%d/%Y")  %></td>
+				        <td><%= project.ExpirationDate %></td>
+				      </tr>
+				    <% end %>
+				    </tbody>
+				  </table>
+
+				</div>
+  			</div>
+  		</div>
+  	</div>
+</main>

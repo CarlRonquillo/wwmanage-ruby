@@ -1,0 +1,139 @@
+<main>
+    <div class="container-fluid">
+    	<div class="card">
+           	<h4 class="card-header primary-color lighten-1 white-text text-center py-3">Add Project</h4>
+  			<div class="card-body">
+			<%= form_for(:project,url: projects_path) do |f| %>
+			<fieldset>
+				<h4 class="text-warning">Project Details</h4><hr>
+				<div class="form-group col-lg-6">
+					<label>Project Name<i class="text-warning">*</i></label>
+					<%= f.text_field(:ProjectName, placeholder: "Project Name", class: 'form-control mb-4') %>
+				</div>
+				<div class="input-group">
+					<div class="form-group col-lg-6">
+						<label>Vision<i class="text-warning">*</i></label>
+						<%= f.text_area(:VisionObjective, placeholder: "Vision", rows: 4, class: 'form-control mb-4') %>
+					</div>
+					<div class="form-group col-lg-6">
+						<label>Description<i class="text-warning">*</i></label>
+						<%= f.text_area(:Description, placeholder: "Describe your project here...", rows: 4, class: 'form-control mb-4') %>
+					</div>
+				</div>
+				<hr>
+
+				<div class="input-group">
+					<div class="form-group col-lg-6">
+						<label>Region<i class="text-warning">*</i></label>
+						<%= f.select(:FKRegionID, options_for_gender, {:include_blank => 'Choose a Region'}, {:class =>"browser-default custom-select col-lg-6"}) %>
+					</div>
+					<div class="form-group col-lg-6">
+						<label>Arrival City</label>
+						<%= f.text_field(:ArrivalCity, class: 'form-control mb-4') %>
+					</div>
+				</div>
+				<div class="input-group">
+					<div class="form-group col-lg-6">
+						<label>Field/World Area<i class="text-warning">*</i></label>
+						<%= f.select(:FKFieldID, options_for_gender, {:include_blank => 'Choose a Region'}, {:class =>"browser-default custom-select col-lg-6"}) %>
+					</div>
+					<div class="form-group col-lg-6">
+						<label>Estimated Cost<i class="text-warning">*</i></label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+	    						<span class="input-group-text">$</span>
+	  						</div>
+							<%= f.number_field(:EstimatedCost, class: 'form-control col-lg-6',:step => 'any') %>
+						</div>
+					</div>
+				</div>
+				<div class="input-group">
+					<div class="form-group col-lg-6">
+						<label>Distict<i class="text-warning">*</i></label>
+						<%= f.select(:FKDistrictID, options_for_gender, {:include_blank => 'Choose a Region'}, {:class =>"browser-default custom-select col-lg-6"}) %>
+					</div>
+					<div class="form-group col-lg-6">
+						<label>Requested Project Funds<i class="text-warning">*</i></label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+	    						<span class="input-group-text">$</span>
+	  						</div>
+							<%= f.number_field(:RequestedProjectFunds, class: 'form-control col-lg-6',:step => 'any') %>
+						</div>
+					</div>
+				</div>
+				<div class="input-group">
+					<div class="form-group col-lg-6">
+						<label>Country<i class="text-warning">*</i></label>
+						<%= f.select(:Country, options_for_gender, {:include_blank => 'Choose a Region'}, {:class =>"browser-default custom-select col-lg-6"}) %>
+					</div>
+					<div class="form-group col-lg-6">
+						<label>Individual Cost per Day</label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+	    						<span class="input-group-text">$</span>
+	  						</div>
+							<%= f.number_field(:IndividualCostPerDay, class: 'form-control col-lg-6',:step => 'any') %>
+						</div>
+					</div>
+				</div>
+				<div class="input-group">
+					<div class="form-group col-lg-6">
+						<label>Province/Region</label>
+						<%= f.text_field(:City, class: 'form-control mb-4') %>
+					</div>
+					<div class="custom-control custom-checkbox col-lg-3">
+						<%= f.check_box :YouthTeamsAccepted , {:class => "custom-control-input", :id => "YouthAccepted"}%>
+						<label class="custom-control-label" for="YouthAccepted">Youth Teams Accepted?</label>
+					</div>
+				</div>
+				<div class="form-group col-lg-6">
+					<label>City<i class="text-warning">*</i></label>
+					<%= f.text_field(:City, class: 'form-control mb-4') %>
+				</div>
+
+				<br><h4 class="text-warning">Site Coordinator <i class="text-warning">*</i></h4><hr>
+				<p>If you do not see a specific sire coordinator on this list please write to <b>nazww@nazarene.org</b> with the site coordinator's name, email address and phone number and a note to add them as a site coordinator.</p>
+				<p><i>Note: This field does not populate until you have specified what district a project is located on.</i></p>
+				<div class="input-group">
+					<div class="form-group col-lg-6">
+						<%= f.select(:FKSiteCoordinatorID, options_for_gender, {:include_blank => 'Choose a Coordinator'}, {:class =>"browser-default custom-select col-lg-8"}) %>
+					</div>
+				</div>
+
+				<br><h4 class="text-warning">Project Categories <i class="text-warning">*</i></h4><hr>
+
+				<div class="custom-control custom-checkbox">
+					<%= f.check_box :compassion , {:class => "custom-control-input", :id => "Compassion"}%>
+					<label class="custom-control-label" for="Compassion">Compassionate Ministries</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<%= f.check_box :construction , {:class => "custom-control-input", :id => "construction"}%>
+					<label class="custom-control-label" for="construction">Construction</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<%= f.check_box :evangelism , {:class => "custom-control-input", :id => "evangelism"}%>
+					<label class="custom-control-label" for="evangelism">Evangelism</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<%= f.check_box :film , {:class => "custom-control-input", :id => "film"}%>
+					<label class="custom-control-label" for="film">JESUS film</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<%= f.check_box :medical , {:class => "custom-control-input", :id => "medical"}%>
+					<label class="custom-control-label" for="medical">Medical</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<%= f.check_box :other , {:class => "custom-control-input", :id => "other"}%>
+					<label class="custom-control-label" for="other">Other</label>
+				</div>
+				<br>
+				<div class="form-group">
+					<%= f.submit("SUBMIT",class:'btn btn-info') %>
+				</div>
+			</fieldset>
+		<% end %>
+		</div>
+	</div>
+	</div>
+</main>
