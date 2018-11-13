@@ -8,13 +8,13 @@ default: &default
   adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  username: c1wwmanage
+  password: vwvVqU@X7
+  host: 192.168.1.43
 
 development:
   <<: *default
   database: c1wwmanage
-  username: c1wwmanage
-  password: vwvVqU@X7
-  host: 192.168.1.43
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -26,6 +26,3 @@ test:
 production:
   <<: *default
   database: c1wwmanage
-  username: c1wwmanage
-  password: vwvVqU@X7
-  host: 192.168.1.43
